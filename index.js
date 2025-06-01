@@ -11,7 +11,15 @@ app.use(logger('dev')); // Configura morgan para registrar las peticiones HTTP e
 app.use(exp.urlencoded({ extended:  false })); // Configura express para que pueda recibir datos en formato URL-encoded
 app.use(exp.json()); // Configura express para que pueda recibir datos en formato JSON
 
+const modeloUsuario = require('./backend/models/usuario.model');
+// Importa el modelo de usuario definido en el archivo usuario.model.js
+app.get('/usuarios', async (req, res)=>{
+    let listaUsuarios = await modeloUsuario.find();
+    console.log(listaUsuarios);
+});
+
 app.listen(process.env.PORT, () => {
     console.log('Servidor en linea');
 });
 // Inicia el servidor en el puerto especificado en las variables de entorno y muestra un mensaje en la consola
+
