@@ -14,10 +14,17 @@ const SchemaUsuario = new mongoose.Schema({
     },
     FNacimiento: {
         type: Date,
+        default: Date.now,
         max: Date.now
     }
     
-});
+},
+
+{
+    versionKey:false
+}
+
+);
 
 const usuario = mongoose.model('usuarios', SchemaUsuario); 
 // Crea un modelo de Mongoose llamado 'usuarios' utilizando el esquema definido anteriormente
